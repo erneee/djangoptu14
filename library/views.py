@@ -33,4 +33,8 @@ def authors(request):
 
 def author(request, author_id):
     single_author = get_object_or_404(Author, pk=author_id)
-    return render(request, 'author.html', )
+    context_t = {
+        'author_t': single_author,
+    }
+
+    return render(request, 'author.html', context_t)
