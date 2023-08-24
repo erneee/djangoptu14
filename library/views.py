@@ -39,8 +39,12 @@ def author(request, author_id):
     return render(request, 'author.html', context_t)
 
 
-class BookListView(generic.ListView):
+class BookListView(generic.ListView):# grazins visas eilutes is lenteles
     model = Book #modelioklase_list -> book_list
+    # context_object_name = 'my_book_list' turetume template pakeisti for loopa
     template_name = 'book_list.html'
 
 
+class BookDetailView(generic.DetailView):
+    model = Book
+    template_name = 'book_detail.html'
