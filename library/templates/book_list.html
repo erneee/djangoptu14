@@ -2,6 +2,8 @@
 {% block content %}
 
 <h1>Knygu sarasas:</h1>
+
+{% if book_list %}
 <ul>
 
   {% for book in book_list %}
@@ -9,6 +11,8 @@
   {% endfor %}
 
 </ul>
+{% else %}
+<p>Bibliotekoje knygu nera.</p>
 
-
+{% endif %}
 {% endblock %}
