@@ -16,7 +16,6 @@ def index(request):
         'num_instance_t': num_instance,
         'num_instance_available_t': num_instance_available,
         'numb_of_authors_t': numb_of_authors,
-
     }
 
     return render(request, 'index.html', context=context_t)
