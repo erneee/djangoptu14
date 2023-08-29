@@ -1,5 +1,54 @@
+.col-sm-10 {
+    background-color: #f0f0f0;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+
 .sidebar-nav {
 	 margin-top: 20px;
 	 padding: 0;
 	 list-style: none;
 }
+body {
+	background: lightblue;
+}
+
+  h1 {
+    font-size: 36px;
+    color: #333;
+    text-align: center;
+  }
+
+  p {
+    font-size: 18px;
+    color: #555;
+    text-align: center;
+  }
+
+  ul {
+    list-style-type: disc;
+    padding-left: 20px;
+  }
+
+
+  li {
+    margin: 10px 0;
+    font-size: 16px;
+    color: #777;
+  }
+
+
+
+
+
+
+    .center-img {
+    	img-align: center;
+        display: block;
+        margin: 0 auto;
+        max-height: 100%;
+        max-width: 100%;
+        position: absolute;
+        top: 50%;
+    }

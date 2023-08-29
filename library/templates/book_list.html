@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+
 {% block content %}
 
 <h1>Knygu sarasas:</h1>
@@ -15,4 +16,28 @@
 <p>Bibliotekoje knygu nera.</p>
 
 {% endif %}
+<div class="pagination">
+  <span class="step-link">
+    {% if page_obj.has_previous %}
+    <ul>
+      <li><a href="?page=1"> &laquo; First </a></li>
+      <li><a href="?page={{ page_obj.previous_page_number }}"> Back &laquo;</a></li>
+    </ul>
+    {% endif %}
+
+
+    <span class="current">
+      {{ page_obj.number }} out of {{ page_obj.paginator.num_pages }}
+    </span>
+
+
+
+    {% if page_obj.has_next %}
+    <ul>
+      <li><a href="?page={{ page_obj.next_page_number }}"> Next &raquo;</a></li>
+      <li><a href="?page={{ page_obj.paginator.num_pages }}"> Last &raquo;</a></li>
+    </ul>
+    {% endif %}
+  </span>
+</div>
 {% endblock %}

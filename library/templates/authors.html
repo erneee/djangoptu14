@@ -8,4 +8,23 @@
   {% endfor %}
 </ul>
 
+<div>
+  {% if author_t.has_other_pages %}
+  <ul class="pagination pagination-sm justify-content-end">
+    {% for nr in author_t.paginator.page_range %}
+      {% if author_t.number == nr %}
+        <li class="page-item-active">
+          <a class="page-link" href="?page={{ nr }}">{{ nr }}</a>
+        </li>
+      {% else %}
+        <li class="page-item">
+          <a class="page-link" href="?page={{ nr }}">{{ nr }}</a>
+        </li>
+      {% endif %}
+    {% endfor %}
+    {% endif %}
+  </ul>
+</div>
+
+
 {% endblock %}

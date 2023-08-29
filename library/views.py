@@ -1,8 +1,9 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
 from django.views import generic
-
 from .models import Book, Author, BookInstance, Genre
+from django.db.models import Q
+from django.core.paginator import Paginator
 
 
 def index(request):
@@ -21,10 +22,12 @@ def index(request):
     return render(request, 'index.html', context=context_t)
 
 def authors(request):
-    authors = Author.objects.all()
+    paginator = Paginator(Author.objects.all(), 2)
+    page_number = request.GET.get('page')
+    paged_authors = paginator.get_page(page_number)
     print(authors)
     context_t = {
-        'author_t': authors,
+        'author_t': paged_authors,
 
     }
     return render(request, 'authors.html', context_t)
@@ -43,8 +46,25 @@ class BookListView(generic.ListView):# grazins visas eilutes is lenteles
     model = Book #modelioklase_list -> book_list
     # context_object_name = 'my_book_list' turetume template pakeisti for loopa
     template_name = 'book_list.html'
-
+    paginate_by = 3 # sukuria page_obj darbui su puslapiais
 
 class BookDetailView(generic.DetailView):
     model = Book
     template_name = 'book_detail.html'
+
+
+
+def search(request):
+    query = request.GET.get('search_text')
+    search_results = Book.objects.filter(
+        Q(title__icontains=query) |
+        Q(summary__icontains=query)
+    )
+    context_t = {
+        'query_t': query,
+        'search_results_t': search_results,
+    }
+
+    return  render(request, 'search.html', context_t)
+
+

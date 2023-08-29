@@ -8,5 +8,5 @@ urlpatterns = [
     path('authors/<int:author_id>', views.author, name='author-one'),
     path('books/', views.BookListView.as_view(), name='book-list'),
     path('books/<int:pk>', views.BookDetailView.as_view(), name='book-one'), ##books/<int:pk> pk yra primary_key
-
+    path('search/', views.search, name='search'),
 ]
